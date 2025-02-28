@@ -1,0 +1,20 @@
+.button {
+    background: linear-gradient(45deg, #74d3ff8f, #6d0c6d85, #74d3ff9c); /* Repetimos el color inicial al final */
+    background-size: 200% 100%; /* Aseguramos que el degradado sea lo suficientemente amplio */
+
+    color: white;
+    animation: slide-bg 5s ease-in-out infinite;
+
+}
+
+@keyframes slide-bg {
+    0% {
+        background-position: 0% 0%;
+    }
+    50%{
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}

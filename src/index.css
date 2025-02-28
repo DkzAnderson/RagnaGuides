@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@theme {
+
+    --font-roboto: "Roboto", serif;
+    /*Colores*/
+    --color-st: #020618;
+    --color-nd: #0f172b;
+    --color-rd: #74d4ff;
+    --color-th: #6d0c6d;
+}
+
+
+h1{
+    font-weight: bold;
+    color: white;
+    @apply text-2xl sm:text-xl
+}
+
+h2{
+    font-weight:600;
+    color: white;
+    @apply text-xl sm:text-lg
+}
+
+h3{
+    font-weight: 400;
+    color: white;
+    @apply text-lg sm:text-base
+}
+
+h4{
+    font-weight: bold;
+    @apply text-lg sm:text-base text-rd
+}
+
+p{
+    font-weight: 300;
+    color: white;
+    @apply text-sm
+}

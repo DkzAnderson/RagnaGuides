@@ -1,0 +1,24 @@
+.title {
+    background: linear-gradient(45deg, #74d4ff, #6d0c6d, #74d4ff); /* Repetimos el color inicial al final */
+    background-size: 200% 100%; /* Aseguramos que el degradado sea lo suficientemente amplio */
+    -webkit-background-clip: text;
+
+    h1{
+        color: transparent;
+    }
+
+    animation: slide-bg 5s ease-in-out infinite;
+
+}
+
+@keyframes slide-bg {
+    0% {
+        background-position: 0% 0%;
+    }
+    50%{
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}

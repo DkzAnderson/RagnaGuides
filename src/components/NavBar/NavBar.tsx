@@ -38,7 +38,7 @@ export const NavBar = () => {
 
 
   return (
-    <section className={`fixed left-0 top-0 bg-black/50 h-full ${isOpen ? 'w-full' : 'w-14'} transition-all ease-in-out duration-500`}>
+    <section className={`fixed left-0 top-0 bg-black/50 h-full ${isOpen ? 'w-full' : 'w-14'} transition-all ease-in-out duration-500 font-roboto`}>
       <div className={`relative h-full bg-nd ${isOpen ? 'w-[80%]' : 'w-full'} transition-all ease-in-out duration-500`}>
         <ul className='relative flex flex-col gap-10 size-full py-8 overflow-hidden'>
           {menuOptions.map((option, i) => (

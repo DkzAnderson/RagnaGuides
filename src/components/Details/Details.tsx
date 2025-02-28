@@ -61,7 +61,7 @@ export const Details = () => {
 
   if (data != null) {
     return (
-      <div className='w-full min-h-screen relative'>
+      <div className='w-full min-h-screen relative font-roboto'>
         <NavBar />
         <div className="flex flex-col w-full">
           {/* Header */}

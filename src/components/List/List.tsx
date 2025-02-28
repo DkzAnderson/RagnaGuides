@@ -4,19 +4,11 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { FarmsData } from "../../data/farms"
 import '../Home/Home.css'
-import { ItemList } from "./itemList"
+import { ItemList } from "./IItemList"
 
 
 interface data {
     data: FarmGuide[] | CraftGuide[]
-}
-
-interface farm{
-    values: FarmGuide;
-}
-
-interface craft{
-    values: CraftGuide;
 }
 
 const listStyles = {
@@ -28,14 +20,6 @@ const listStyles = {
 
 }
 
-const FarmData: React.FC<farm> = ({values}) =>{
-    console.log(values)
-
-    return(
-        <div>
-        </div>
-    )
-}
 
 const FarmList: React.FC<data> = ({ data }) => {
 
@@ -106,10 +90,6 @@ const CraftList: React.FC<data> = ({data})=>{
         </div>
     )
 }
-
-
-
-
 
 export const List = () => {
 

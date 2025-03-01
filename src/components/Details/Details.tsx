@@ -7,12 +7,14 @@ import { useEffect, useState } from "react";
 import { Farm } from "../../types/farm";
 import { enemy } from "../../types/enemy";
 import { item } from "../../types/item";
+import { List } from "./List";
 
 export const Details = () => {
 
   const [data, setData] = useState<null | Farm>(null);
   const [loading,setLoading] = useState(true);
   const { id } = useParams();
+
 
   useEffect(() => {
     const GetData = () => {
@@ -60,6 +62,25 @@ export const Details = () => {
 
 
   if (data != null) {
+    // Filtrar enemigos
+    const enemies: enemy[] = data.enemiesToKill.filter(
+      (npc): npc is enemy =>
+        typeof npc !== "number" &&
+        "id" in npc &&
+        "name" in npc &&
+        "image" in npc
+    );
+
+    // Filtrar objetos obtenibles
+    const items: item[] = data.obtainableItems.filter(
+      (obj): obj is item =>
+        typeof obj !== "number" &&
+        "id" in obj &&
+        "name" in obj &&
+        "image" in obj
+    );
+
+
     return (
       <div className='w-full min-h-screen relative font-roboto'>
         <NavBar />
@@ -75,160 +96,98 @@ export const Details = () => {
 
           {/* Contenido */}
           <div className="w-full flex flex-col gap-5 max-h-[90vh] pl-20 pr-4 py-2 overflow-auto border">
-            {/* Clases */}
-            <span className="flex flex-col">
-              <h4 className="">
-                Clases:
-              </h4>
-              <ul className="w-full flex flex-wrap gap-2 items-center pl-6 pr-2 ">
-                {data.clase.map((e, i) => (
-                  <li key={i}>
-                    <h5 className="text-white">
-                      {e}
-                    </h5>
-                  </li>
-                ))}
-              </ul>
-            </span>
-
-            {/* Descripción */}
-            <div className="text-white ">
-              <h4>
-                Información:
-              </h4>
-              <ul className="flex flex-col text-white pl-6 pr-2 list-disc">
-                {data.description.map((txt, i) => (
-                  <li key={i}>
-                    <p>{txt}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Nivel recomendado / zona */}
-            <div className="flex justify-between">
-              <span>
-                <h4>
-                  Nivel:
-                </h4>
-                <p className="pl-6 pr-2 ">
-                  {data.level}
-                </p>
-              </span>
-              <span>
-                <h4>
+            <div className="grid grid-cols-2 w-full gap-y-2">
+              {/* Zona */}
+              <span className="col-span-2 w-full flex items-center gap-2">
+                <h4 className="text-sm text-center">
                   Zona:
                 </h4>
-                <p className="pl-6 pr-2 ">
+                <p className="">
                   {data.zone}
                 </p>
               </span>
+              {/* Nivel recomendado */}
+              <span className="w-full flex items-center gap-2">
+                <h4 className="text-sm ">
+                  Nivel:
+                </h4>
+                <p className="">
+                  {data.level}
+                </p>
+              </span>
+              {/* Autoloot*/}
+              <span className="flex gap-2 w-full">
+                <h4 className="text-sm">
+                  Autoloot:
+                </h4>
+                <h5 className="text-sm text-white">
+                  {data.autoloot}
+                </h5>
+              </span>
 
-            </div>
-            {/* Autoloot - Alootid */}
-            <div>
+              {/* clases */}
+              <div className="w-full flex gap-2 col-span-2">
+                <h4 className="text-sm">
+                  Clases:
+                </h4>
+
+                <ul className="w-full grid grid-cols-2 h-12 bg-nd rounded gap-x-2 gap-y-3 items-center p-2 overflow-auto">
+                  {data.clase.map((e, i) => (
+                    <li key={i}
+                      className="bg-th rounded px-1"
+                    >
+                      <h5 className="text-sm text-rd">
+                        {e}
+                      </h5>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              {/* Alootid */}
               {data.alootid.length > 1 &&
-                <span>
+                <div className="w-full col-span-2 flex">
 
-                  <h4>
+                  <h4 className="text-sm">
                     Alootid:
                   </h4>
 
-                  <ul className="flex flex-wrap gap-8 pl-8 text-white list-disc">
+                  <ul className="w-full h-12 grid grid-cols-4 gap-y-2 gap-x-1 text-white p-2 bg-nd rounded overflow-auto">
                     {data.alootid.map((loot, i) => (
                       <li
                         key={i}
+                        className="w-full h-5 flex rounded bg-th px-1"
                       >
-                        <p># {loot}</p>
+                        <h5 className="text-rd text-sm font-bold"># {loot}</h5>
                       </li>
                     ))}
                   </ul>
-                </span>
+                </div>
+              }
+              {/* Descripción */}
+              {data.description.length > 0 &&
+                <div className="col-span-2">
+                  <h4 className="text-sm">
+                    Información:
+                  </h4>
+                  <ul className="w-full h-12 flex bg-nd rounded flex-col text-white pl-6 pr-2 list-disc overflow-auto">
+                    {data.description.map((txt, i) => (
+                      <li key={i}>
+                        <h5 className="text-sm text-white font-light">{txt}</h5>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               }
 
-              <span>
-                <h4>
-                  Autoloot: {data.autoloot}
-                </h4>
-              </span>
+              {/* Enemigos a matar */}
+              <div className="w-full col-span-2">
+                <List data={enemies} />
+              </div>
+              {/* Objetos obtenibles*/}
+              <div className="w-full col-span-2">
+                <List data={items} />
+              </div>
             </div>
-
-            {/* Enemigos a matar */}
-            <div>
-              <h4>
-                Enemigos:
-              </h4>
-              <ul className="flex flex-col gap-2 overflow-auto max-h-40">
-                {data.enemiesToKill
-                  .filter((npc): npc is enemy => typeof npc !== "number") // Filtramos solo los enemigos
-                  .map((npc, i) => (
-                    <li
-                      className="flex items-center gap-2 border-b border-white"
-                      key={i}
-                    >
-                      <picture className="size-12 p-1">
-                        <img
-                          className="size-full object-contain"
-                          src={npc.image}
-                          alt={`${npc.name}-poster`}
-                        />
-                      </picture>
-
-                      <span className="flex gap-1 items-center h-full">
-                        <h4>nombre:</h4>
-
-                        <h5 className="text-white pt-1">
-                          {npc.name}
-                        </h5>
-                      </span>
-
-                      <span className="flex gap-1 items-center">
-                        <h4>Id:</h4>
-                        <p className="pt-1">#{npc.id}</p>
-                      </span>
-                    </li>
-                  ))}
-              </ul>
-
-            </div>
-            {/* Objetos obtenibles*/}
-            <div>
-              <h4>
-                Objetos:
-              </h4>
-              <ul className="flex flex-col gap-2 overflow-auto max-h-40">
-                {data.obtainableItems
-                  .filter((obj): obj is item => typeof obj !== "number") // Filtramos solo los enemigos
-                  .map((obj, i) => (
-                    <li
-                      className="flex items-center gap-2 border-b border-white"
-                      key={i}
-                    >
-                      <picture className="size-12 p-1">
-                        <img
-                          className="size-full object-contain"
-                          src={obj.image}
-                          alt={`${obj.name}-poster`}
-                        />
-                      </picture>
-
-                      <span className="flex gap-1 items-center h-full">
-                        <h4>nombre:</h4>
-
-                        <h5 className="text-white pt-1">
-                          {obj.name}
-                        </h5>
-                      </span>
-
-                      <span className="flex gap-1 items-center">
-                        <h4>Id:</h4>
-                        <p className="pt-1">#{obj.id}</p>
-                      </span>
-                    </li>
-                  ))}
-              </ul>
-            </div>
-
           </div>
 
         </div>

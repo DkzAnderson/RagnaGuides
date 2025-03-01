@@ -1,4 +1,6 @@
 import { Farm, FarmGuide } from "../types/farm";
+import { jobsData } from './jobs.tsx';
+
 
 export const FarmsData = [
     new FarmGuide({
@@ -6,7 +8,12 @@ export const FarmsData = [
         values: [
             new Farm(            {
                 title: 'Marionnete Doll e Infiltrator',
-                clase: ['Paladín', 'Crusader', 'High Priest', 'Sniper'],
+                clase: [
+                    jobsData.paladin,
+                    jobsData.crusader,
+                    jobsData.assasinCross,
+                    jobsData.sniper
+                ],
                 level: '60+',
                 zone: 'Geffen Dungeon Piso 3 (MVP)',
                 enemiesToKill: [
@@ -42,7 +49,7 @@ export const FarmsData = [
                 title: 'Hodremlin',
                 zone: 'Rachel Sanctuary Piso 3',
                 level: '80+',
-                clase: ['Paladín','Crusader'],
+                clase: [jobsData.paladin,jobsData.crusader],
                 enemiesToKill: [1773],
                 obtainableItems: [587,7563,4413],
                 autoloot: '1%',
@@ -55,13 +62,12 @@ export const FarmsData = [
                 zone: 'Rachel Sanctuary Piso 1',
                 level: '80+',
                 clase: [
-                    'Wizard',
-                    'High Wizard',
-                    'Asassin',
-                    'Assasin Cross',
-                    'Sniper',
-                    'Knight',
-                    'Lord Knight',
+                    jobsData.wizzard,
+                    jobsData.highWizzard,
+                    jobsData.assasin,
+                    jobsData.assasinCross,
+                    jobsData.sniper,
+                    jobsData.lordKnight
                 ],
                 enemiesToKill: [1772,1771,1773],
                 obtainableItems: [
@@ -88,7 +94,7 @@ export const FarmsData = [
                     title: 'Incubus, Succubus y Abysmal Knight',
                     zone: 'Geffenia Piso 3',
                     level: '90+',
-                    clase: ['Sniper'],
+                    clase: [jobsData.sniper],
                     enemiesToKill: [1374,1370,1219],
                     obtainableItems: [
                         522,505,985,984,2610,
@@ -115,12 +121,12 @@ export const FarmsData = [
                     title: 'Raydric, Raydric Archer y Abysmal Knight cards',
                     zone: 'Glast Heim Chivalry Piso 2',
                     level: '85+',
-                    clase: [   
-                    'Sniper',
-                    'Crusader',
-                    'Paladin',
-                    'Assasin',
-                    'Assasin Cross'
+                    clase: [ 
+                        jobsData.sniper,
+                        jobsData.crusader,
+                        jobsData.paladin,
+                        jobsData.assasin,
+                        jobsData.assasinCross  
                     ],
                     enemiesToKill: [1163,1276,1219,1132],
                     obtainableItems: [
@@ -147,10 +153,10 @@ export const FarmsData = [
                     zone: 'Sphynx Piso 5 (MVP)',
                     level: '80+',
                     clase: [
-                    'Star Gladiator',
-                    'Sniper',
-                    'Assasin',
-                    'Assasin Cross'
+                        jobsData.starGladiator,
+                        jobsData.sniper,
+                        jobsData.assasin,
+                        jobsData.assasinCross
                     ],
                     enemiesToKill: [1154],
                     obtainableItems: [1217,2522,7110,4099],
@@ -174,7 +180,7 @@ export const FarmsData = [
                     title: 'Farmeo de Venatus',
                     zone: 'Juperos Dungeon piso 1',
                     level: '85+',
-                    clase: ['Assasin Cross', 'Assasin'],
+                    clase: [jobsData.assasinCross, jobsData.assasin],
                     enemiesToKill: [
                         1675,1676,1677,1678,1679
                     ],
@@ -206,12 +212,12 @@ export const FarmsData = [
                     zone: 'Goryun Dungeon Piso 1',
                     level: '60+',
                     clase: [
-                    'Sniper',
-                    'Hunter',
-                    'Asassin',
-                    'Assasin Cross',
-                    'BlackSmith',
-                    'WhiteSmith'
+                        jobsData.sniper,
+                        jobsData.hunter,
+                        jobsData.assasin,
+                        jobsData.assasinCross,
+                        jobsData.blackSmith,
+                        jobsData.whiteSmith
                     ],
                     enemiesToKill: [1410,1417],
                     obtainableItems: [

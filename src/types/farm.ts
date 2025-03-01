@@ -2,6 +2,7 @@ import { enemy } from "./enemy";
 import { item } from "./item";
 import { enemiesData } from "../data/enemies";
 import { itemsData } from "../data/items";
+import { job } from "./job";
 /*
     - titulo
     - subtitulo
@@ -17,7 +18,7 @@ import { itemsData } from "../data/items";
 
 export interface FarmProps {
     title: string;
-    clase: string[];
+    clase: job[];
     level: string;
     zone: string;    
     description: string[];
@@ -36,7 +37,7 @@ export interface FarmGuideProps {
 
 export class Farm{
     title: string;
-    clase: string[];
+    clase: job[];
     level: string;
     zone: string;    
     description: string[];

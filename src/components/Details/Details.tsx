@@ -8,6 +8,7 @@ import { Farm } from "../../types/farm";
 import { enemy } from "../../types/enemy";
 import { item } from "../../types/item";
 import { List } from "./List";
+import { JobsList } from "./JobList";
 
 export const Details = () => {
 
@@ -82,7 +83,7 @@ export const Details = () => {
 
 
     return (
-      <div className='w-full min-h-screen relative font-roboto'>
+      <div className='w-full min-h-screen relative font-nunito'>
         <NavBar />
         <div className="flex flex-col w-full">
           {/* Header */}
@@ -95,7 +96,7 @@ export const Details = () => {
           </span>
 
           {/* Contenido */}
-          <div className="w-full flex flex-col gap-5 max-h-[90vh] pl-20 pr-4 py-2 overflow-auto border">
+          <div className="w-full flex flex-col gap-5 max-h-[90vh] pl-16 pr-4 py-2 overflow-auto border">
             <div className="grid grid-cols-2 w-full gap-y-2">
               {/* Zona */}
               <span className="col-span-2 w-full flex items-center gap-2">
@@ -126,22 +127,8 @@ export const Details = () => {
               </span>
 
               {/* clases */}
-              <div className="w-full flex gap-2 col-span-2">
-                <h4 className="text-sm">
-                  Clases:
-                </h4>
-
-                <ul className="w-full grid grid-cols-2 h-12 bg-nd rounded gap-x-2 gap-y-3 items-center p-2 overflow-auto">
-                  {data.clase.map((e, i) => (
-                    <li key={i}
-                      className="bg-th rounded px-1"
-                    >
-                      <h5 className="text-sm text-rd">
-                        {e}
-                      </h5>
-                    </li>
-                  ))}
-                </ul>
+              <div className="w-full col-span-2">
+                <JobsList data={data.clase}/>
               </div>
               {/* Alootid */}
               {data.alootid.length > 1 &&

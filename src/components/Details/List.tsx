@@ -14,10 +14,10 @@ export const List: React.FC<Props> = ({data}) => {
         title: 'border-b-2',
         list: {
             main: 'flex flex-col gap-2 w-full py-2 max-h-52 overflow-auto',
-            item: 'w-full h-16 bg-nd rounded grid grid-cols-[20%_60%_20%] items-center',
+            item: 'w-full h-16 bg-nd rounded grid grid-cols-[15%_58%_22%] items-center',
             imageBox: 'size-full p-2 flex items-center justify-center',
             image: 'size-10 object-contain',
-            txtBox: 'size-full flex gap-2 items-center',
+            txtBox: 'size-full flex gap-1 items-center',
             titles: 'text-sm',
             txt: 'text-sm text-gray-300'
         },
@@ -58,7 +58,7 @@ export const List: React.FC<Props> = ({data}) => {
                             Id: 
                         </h4>
                         <h5 className={styles.list.txt}>
-                            {value.id}
+                            #{value.id}
                         </h5>
                     </div>
 

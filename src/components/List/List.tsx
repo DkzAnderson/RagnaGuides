@@ -6,7 +6,6 @@ import { FarmsData } from "../../data/farms"
 import '../Home/Home.css'
 import { ItemList } from "./IItemList"
 
-
 interface data {
     data: FarmGuide[] | CraftGuide[]
 }

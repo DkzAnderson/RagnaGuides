@@ -1,5 +1,6 @@
 import { item } from "../types/item";
 
+
 export const itemsData = [
     new item({id: 526 , name: 'Royal Jelly', dropRate: 100}),
     new item({id: 7164, name: 'Solid Peach', dropRate: 100}),
